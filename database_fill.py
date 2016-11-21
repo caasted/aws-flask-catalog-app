@@ -2,13 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import *
 
-engine = create_engine('sqlite:///productcatalog.db')
+engine = create_engine('postgresql://catalog:catalog@localhost:5432/catalog')
 base.Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Create a first user for entering items
-user = user.User(name="Secret User", email="somebody@email.com")
+user = user.User(name="catalog", email="catalog@email.com")
 session.add(user)
 session.commit()
 
