@@ -22,16 +22,16 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 7. Install apache with the command `apt-get install apache2`
 8. Install the required library with the command `apt-get install libapache2-mod-wsgi`
 9. Configure the apache service using `nano /etc/apache2/sites-enabled/000-default.conf`
-..* Add the following lines at the bottom of the file, before "</VirtualHost>"
+..* Add the following lines at the bottom of the file, before `</VirtualHost>`
 ```
-		WSGIDaemonProcess catalog user=catalog group=catalog threads=5
-        WSGIScriptAlias / /var/www/html/catalog/myapp.wsgi
+	WSGIDaemonProcess catalog user=catalog group=catalog threads=5
+	WSGIScriptAlias / /var/www/html/catalog/myapp.wsgi
 
-        <Directory /var/www/html/catalog>
-                WSGIProcessGroup catalog
-                WSGIApplicationGroup %{GLOBAL}
-                Order deny,allow
-                Allow from all
-        </Directory>
-'''
+	<Directory /var/www/html/catalog>
+		WSGIProcessGroup catalog
+		WSGIApplicationGroup %{GLOBAL}
+		Order deny,allow
+		Allow from all
+	</Directory>
+	
 10. Restart the apache service with the command `apache2ctl restart`
