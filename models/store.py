@@ -6,7 +6,6 @@ from models.user import User
 
 class Store(Base):
 	__tablename__ = 'store'
-	__table_args__ = {'sqlite_autoincrement': True}
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String(250), nullable=False)
