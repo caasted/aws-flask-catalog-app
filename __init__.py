@@ -1,1 +1,0 @@
-__all__ = ["common", "stores", "newstore", "editstore", "deletestore", "catalog", "product", "newproduct", "editproduct", "deleteproduct", "getjson", "gconnect", "gdisconnect"]
