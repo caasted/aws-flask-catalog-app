@@ -44,13 +44,19 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 16. Install git with the command `apt-get install git`
 17. Clone the catalog git respository into the correct directory with the following steps:
   1. `cd /var/www/html`
-  2. `git clone https://github.com/caasted/aws-flask-catalog-app.git`
+  2. `git clone https://github.com/caasted/aws-flask-catalog-app.git catalog`
 18. Install PostgreSQL using `apt-get install postgresql`
-19. Switch to the "catalog" user with the command `su catalog`
-20. Launch the catalog database using the following steps:
-  1. `cd /var/www.html/catalog/database`
-  2. `psql`
-  3. `\i catalog_setup.sql`
-  4. `\q`
-21. Populate the catalog database using the command `python catalog_fill.py`
-22. Verify the application is [online](http://35.163.10.3/)
+19. Create a user and database named "catalog" in PostgreSQL
+  1. `su postgres`
+  2. `cd`
+  3. `psql`
+  4. `CREATE USER catalog WITH PASSWORD 'catalog';`
+  5. `CREATE DATABASE catalog WITH OWNER = catalog;
+  6. `\q`
+  7. `exit`
+20. Install required support packages:
+  1. `apt-get install python-psycopg2`
+  2. `apt-get install libpq-dev`
+21. Initialize the database with `python /var/www/html/catalog/database/database_setup.py`
+22. Populate the database using the command `python /var/www/html/catalog/database/database_fill.py`
+23. Verify the application is [online](http://35.163.10.3/)
