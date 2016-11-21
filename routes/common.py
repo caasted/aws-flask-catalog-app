@@ -12,7 +12,7 @@ from models.product import Product
 
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///productcatalog.db')
+engine = create_engine('postgresql://catalog:catalog@localhost:5432/catalog')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
