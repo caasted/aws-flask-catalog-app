@@ -7,5 +7,5 @@ from models.user import User
 from models.store import Store
 from models.product import Product
 
-engine = create_engine('sqlite:///productcatalog.db')
+engine = create_engine('postgresql://catalog:catalog123!@localhost:8000/catalog')
 Base.metadata.create_all(engine)
