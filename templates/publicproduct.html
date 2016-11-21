@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row banner">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ store.name }}</h1>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-4 categories">
+			<h2>Categories</h2>
+			{% for category in categories %}
+				<h3><a href="{{ url_for('showCatalog', store_id=store.id, category=category.category) }}">{{ category.category }}</a></h3>
+			{% endfor %}
+		</div>
+		<div class="col-md-8 products">
+			<h2>{{ product.name }}</h2>
+			<p> {{ product.description }}</p>
+			<p> {{ product.price }}</p>
+		</div>
+	</div>
+{% endblock %}
