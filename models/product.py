@@ -12,7 +12,7 @@ class Product(Base):
 	id = Column(Integer, primary_key=True)
 	name = Column(String(250), nullable=False)
 	category = Column(String(80), nullable=False)
-	description = Column(String(250))
+	description = Column(String(2000))
 	price = Column(String(10))
 	store_id = Column(Integer, ForeignKey('store.id'))
 	store = relationship(Store)
