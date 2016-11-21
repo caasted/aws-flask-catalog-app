@@ -51,7 +51,7 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
   2. `cd`
   3. `psql`
   4. `CREATE USER catalog WITH PASSWORD 'catalog';`
-  5. `CREATE DATABASE catalog WITH OWNER = catalog;
+  5. `CREATE DATABASE catalog WITH OWNER = catalog;`
   6. `\q`
   7. `exit`
 20. Install required support packages:
@@ -59,4 +59,4 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
   2. `apt-get install libpq-dev`
 21. Initialize the database with `python /var/www/html/catalog/database/database_setup.py`
 22. Populate the database using the command `python /var/www/html/catalog/database/database_fill.py`
-23. Verify the application is [online](http://35.163.10.3/)
+23. Verify the application is [online](http://ec2-35-163-10-3.us-west-2.compute.amazonaws.com/)
