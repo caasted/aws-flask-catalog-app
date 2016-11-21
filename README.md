@@ -5,9 +5,10 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 1. Create a new user named "grader" with the command `adduser grader`, follow prompts
 2. Add "grader" to the sudoers group by creating a new file `nano /etc/sudoers.d/grader`
   * Enter the file contents `grader ALL=(ALL) NOPASSWD:ALL` and save
-3. Update all currently instlaled packages using `apt-get update` then `apt-get upgrade`
-4. Change the SSH port from 22 to 2200 by editing `/etc/ssh/sshd_config` using nano
+3. Update all currently installed packages using `apt-get update` then `apt-get upgrade`
+4. Change the SSH port from 22 to 2200 by editing the config file using `nano /etc/ssh/sshd_config`
   * Change the line below "What ports, IPs and protocols we listen for" from `Port 22` to `Port 2200`
+  * Implement this change with the command `service ssh restart`
 5. Configure the Uncomplicated Firewall to only allow incoming connections for SSH, HTTP, and NTP
   1. Verify UFW is currently disabled with the command `ufw status`; if not disabled: `ufw disable`
   2. `ufw default deny incoming`
@@ -34,7 +35,7 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 		Allow from all
 	</Directory>
 ```
-10. Create a new user named "catalog" with the command `add catalog`, follow prompts
+10. Create a new user named "catalog" with the command `adduser catalog`, follow prompts
 11. Implement the changes with the command `apache2ctl restart`
 12. Install pip with the command `apt-get install python-pip`
 13. Add the python package SQLAlchemy using `python -m pip install SQLAlchemy`
