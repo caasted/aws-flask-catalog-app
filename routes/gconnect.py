@@ -51,7 +51,7 @@ def gconnect():
 
     # Verify that the access token is valid for this app.
     CLIENT_ID = json.loads(
-				open('client_secrets.json', 'r').read())['web']['client_id']
+				open('catalog/client_secrets.json', 'r').read())['web']['client_id']
     if result['issued_to'] != CLIENT_ID:
         response = make_response(
             		json.dumps("Token's client ID does not match app's."), 401)
