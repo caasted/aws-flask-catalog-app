@@ -25,7 +25,7 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 ..* Add the following lines at the bottom of the file, before `</VirtualHost>`
 ```
 	WSGIDaemonProcess catalog user=catalog group=catalog threads=5
-	WSGIScriptAlias / /var/www/html/catalog/myapp.wsgi
+	WSGIScriptAlias / /var/www/html/catalog/catalog.wsgi
 
 	<Directory /var/www/html/catalog>
 		WSGIProcessGroup catalog
@@ -33,5 +33,23 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 		Order deny,allow
 		Allow from all
 	</Directory>
-	
-10. Restart the apache service with the command `apache2ctl restart`
+```
+10. Create a new user named "catalog" with the command `add catalog`, follow prompts
+11. Implement the changes with the command `apache2ctl restart`
+12. Install pip with the command `apt-get install python-pip`
+13. Add the python package SQLAlchemy using `python -m pip install SQLAlchemy`
+14. Add the python package Flask using `python -m pip install flask`
+15. Add the python package oauth2client using `python -m pip install oauth2client`
+16. Install git with the command `apt-get install git`
+17. Clone the catalog git respository into the correct directory with the following steps:
+..1. `cd /var/www/html`
+..2. `git clone https://github.com/caasted/aws-flask-catalog-app.git`
+18. Install PostgreSQL using `apt-get install postgresql`
+19. Switch to the "catalog" user with the command `su catalog`
+20. Launch the catalog database using the following steps:
+..1. `cd /var/www.html/catalog/database`
+..2. `psql`
+..3. `\i catalog_setup.sql`
+..4. `\q`
+21. Populate the catalog database using the command `python catalog_fill.py`
+22. Verify the application is being served [online](http://http://35.163.10.3/)
