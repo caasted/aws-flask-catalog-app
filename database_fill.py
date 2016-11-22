@@ -8,7 +8,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Create a first user for entering items
-user = user.User(name="catalog", email="catalog@email.com")
+user = user.User(name="Chris", email="chris@email.com")
 session.add(user)
 session.commit()
 
