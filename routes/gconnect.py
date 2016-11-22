@@ -21,7 +21,7 @@ def gconnect():
     try:
         # Upgrade the authorization code into a credentials object
         oauth_flow = flow_from_clientsecrets(
-            '/var/www/html/catalog/catalog/client_secrets.json', scope='')
+            r'/var/www/html/catalog/catalog/client_secrets.json', scope='')
         # client_secrets had to be absolute-addressed for some reason
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
