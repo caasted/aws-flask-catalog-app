@@ -11,10 +11,11 @@ def showCatalog(store_id, category=''):
 	if not creator:
 		return redirect(url_for('showStores'))
 	categories = session.query(Product).filter_by(
-						store_id=store_id).group_by(Product.category)
+						store_id=store_id).group_by(Product.category
+						).with_entities(Product.category).all()
 	if category != '':
 		products = session.query(Product).filter_by(
-						store_id=store_id).filter_by(category=category)
+						store_id=store_id).filter_by(category=category).all()
 		section_title = "%s Products" % (category, )
 	else:
 		products = session.query(Product).filter_by(

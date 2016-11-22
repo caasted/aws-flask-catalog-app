@@ -12,7 +12,7 @@ def showProduct(store_id, category, product_id):
 	if not product:
 		return redirect(url_for('showStores'))
 	categories = session.query(Product).filter_by(store_id=store_id).group_by(
-														Product.category)
+														Product.category).all()
 	if 'user_id' not in login_session or (creator.id != 
 													login_session['user_id']):
 		state = makeState()
