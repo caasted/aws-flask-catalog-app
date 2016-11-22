@@ -21,8 +21,7 @@ def gconnect():
     try:
         # Upgrade the authorization code into a credentials object
         oauth_flow = flow_from_clientsecrets(
-            r'/var/www/html/catalog/catalog/client_secrets.json', scope='')
-        # client_secrets had to be absolute-addressed for some reason
+            '/var/www/html/catalog/catalog/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -53,7 +52,8 @@ def gconnect():
 
     # Verify that the access token is valid for this app.
     CLIENT_ID = json.loads(
-				open('catalog/client_secrets.json', 'r').read())['web']['client_id']
+				open('/var/www/html/catalog/catalog/client_secrets.json', 
+                                                'r').read())['web']['client_id']
     if result['issued_to'] != CLIENT_ID:
         response = make_response(
             		json.dumps("Token's client ID does not match app's."), 401)
