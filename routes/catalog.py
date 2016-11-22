@@ -11,7 +11,7 @@ def showCatalog(store_id, category=''):
 	if not creator:
 		return redirect(url_for('showStores'))
 	categories = session.query(Product).filter_by(
-						store_id=store_id).order_by(Product.category).all()
+						store_id=store_id).group_by(Product.category).all()
 	if category != '':
 		products = session.query(Product).filter_by(
 						store_id=store_id).filter_by(category=category).all()
