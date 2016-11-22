@@ -2,17 +2,21 @@
 Rewriting the catalog application to run on an AWS Linux server and use PostgreSQL for data storage
 
 ## Server Information
-IP Address: 35.163.10.3
-URL: ec2-35-163-10-3.us-west-2.compute.amazonaws.com
+**IP Address:** `35.163.10.3`
+**URL:** `ec2-35-163-10-3.us-west-2.compute.amazonaws.com`
 
 ## Server Configuration Steps
+
 1. Create a new user named "grader" with the command `adduser grader`, follow prompts
+  * Locally create a key pair for "grader" and paste the public key at `/home/grader/.ssh/authorized_keys`
 2. Add "grader" to the sudoers group by creating a new file `nano /etc/sudoers.d/grader`
-  * Enter the file contents `grader ALL=(ALL) NOPASSWD:ALL` and save
+  * Enter the file contents `grader ALL=(ALL) PASSWD:ALL` and save
 3. Update all currently installed packages using `apt-get update` then `apt-get upgrade`
-4. Change the SSH port from 22 to 2200 by editing the config file using `nano /etc/ssh/sshd_config`
+4. Change the SSH port and disable root login using `nano /etc/ssh/sshd_config`
   * Change the line below "What ports, IPs and protocols we listen for" from `Port 22` to `Port 2200`
-  * Implement this change with the command `service ssh restart`
+  * In the Authentication section, replace `PermitRootLogin without-password with `PermitRootLogin no`
+  * Implement these changes with the command `service ssh restart`
+  * **Note:** If you disconnect after this step you will only be able to reconnect to the server via SSH as "grader". If so, you will need to use `sudo` to complete many of the remaining steps.
 5. Configure the Uncomplicated Firewall to only allow incoming connections for SSH, HTTP, and NTP
   1. Verify UFW is currently disabled with the command `ufw status`; if not disabled: `ufw disable`
   2. `ufw default deny incoming`
