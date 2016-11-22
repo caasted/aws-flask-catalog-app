@@ -14,7 +14,7 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
 3. Update all currently installed packages using `apt-get update` then `apt-get upgrade`
 4. Change the SSH port and disable root login using `nano /etc/ssh/sshd_config`
   * Change the line below "What ports, IPs and protocols we listen for" from `Port 22` to `Port 2200`
-  * In the Authentication section, replace `PermitRootLogin without-password with `PermitRootLogin no`
+  * In the Authentication section, replace `PermitRootLogin without-password` with `PermitRootLogin no`
   * Implement these changes with the command `service ssh restart`
   * **Note:** If you disconnect after this step you will only be able to reconnect to the server via SSH as "grader". If so, you will need to use `sudo` to complete many of the remaining steps.
 5. Configure the Uncomplicated Firewall to only allow incoming connections for SSH, HTTP, and NTP
