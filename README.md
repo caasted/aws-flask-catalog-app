@@ -11,6 +11,7 @@ Rewriting the catalog application to run on an AWS Linux server and use PostgreS
   * Locally create a key pair for "grader" and paste the public key at `/home/grader/.ssh/authorized_keys`
 2. Add "grader" to the sudoers group by creating a new file `nano /etc/sudoers.d/grader`
   * Enter the file contents `grader ALL=(ALL) PASSWD:ALL` and save
+  * Restrict the file using `chmod 400 /etc/sudoers.d/grader`
 3. Update all currently installed packages using `apt-get update` then `apt-get upgrade`
 4. Change the SSH port and disable root login using `nano /etc/ssh/sshd_config`
   * Change the line below "What ports, IPs and protocols we listen for" from `Port 22` to `Port 2200`
