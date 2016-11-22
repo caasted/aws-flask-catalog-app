@@ -1,6 +1,10 @@
 # aws-flask-catalog-app
 Rewriting the catalog application to run on an AWS Linux server and use PostgreSQL for data storage
 
+## Server Information
+IP Address: 35.163.10.3
+URL: ec2-35-163-10-3.us-west-2.compute.amazonaws.com
+
 ## Server Configuration Steps
 1. Create a new user named "grader" with the command `adduser grader`, follow prompts
 2. Add "grader" to the sudoers group by creating a new file `nano /etc/sudoers.d/grader`
