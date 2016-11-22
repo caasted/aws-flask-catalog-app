@@ -35,5 +35,3 @@ def showCatalog(store_id, category=''):
 												categories=categories, 
 												products=products, 
 												section_title=section_title)
-
-[SQL: 'SELECT product.id AS product_id, product.name AS product_name, product.category AS product_category, product.description AS product_description, product.price AS product_price, product.store_id AS product_store_id, product.user_id AS product_user_id \\nFROM product \\nWHERE product.store_id = %(store_id_1)s GROUP BY product.category'] [parameters: {'store_id_1': 1}]
